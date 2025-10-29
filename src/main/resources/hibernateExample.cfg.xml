@@ -1,0 +1,23 @@
+<hibernate-configuration>
+	<session-factory>
+		<!-- Configuración de conexión -->
+		<property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://"IP de la BDD"/Airsoft</property>
+		<property name="hibernate.connection.username">"nombre de usuario"</property>
+		<property name="hibernate.connection.password">"contraseña del usuario"</property>
+
+		<!-- Dialecto -->
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<!-- Opciones adicionales -->
+		<property name="jakarta.persistence.schema-generation.database.action">none</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">false</property>
+
+		<mapping class="org.otalora.modelo.Usuario"></mapping>
+		<mapping class="org.otalora.modelo.Evento"></mapping>
+		<mapping class="org.otalora.modelo.Campo"></mapping>
+		<mapping class="org.otalora.modelo.Reserva"></mapping>
+
+	</session-factory>
+</hibernate-configuration>
