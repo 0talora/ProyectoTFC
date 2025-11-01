@@ -3,6 +3,7 @@ package org.otalora.controlador;
 import org.otalora.dao.impl.UsuarioDAO;
 import org.otalora.modelo.Usuario;
 import org.otalora.seguridad.Encriptacion;
+import org.otalora.seguridad.VerificacionCorreo;
 
 public class LogInControlador {
 
@@ -10,6 +11,7 @@ public class LogInControlador {
         
         UsuarioDAO usuarioVerificar=new UsuarioDAO();
         Encriptacion encriptacion=new Encriptacion();
+        VerificacionCorreo verificacionCorreo=new VerificacionCorreo();
 
         Usuario usuario= usuarioVerificar.obtenerUsuario(nick);
         if (usuario == null) {
@@ -26,8 +28,12 @@ public class LogInControlador {
             System.out.println("El usuario " + usuario.getNick() + " no está activo");
             return false;
         }
-        
+
+
         UsuarioSesion.getInstancia().setUsuarioActual(usuario);
+
+        verificacionCorreo.enviarCorreoInicioSesion(UsuarioSesion.getInstancia().getUsuarioActual().getCorreo());
+
         return true;
         
     }

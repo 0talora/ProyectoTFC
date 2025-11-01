@@ -1,2 +1,7 @@
 src/main/resources/hibernate.cfg.xml
 .DS_Store
+.idea/compiler.xml
+.idea/encodings.xml
+.idea/jarRepositories.xml
+.idea/misc.xml
+.idea/vcs.xml

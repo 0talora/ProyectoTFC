@@ -21,6 +21,10 @@ import jakarta.mail.internet.MimeMessage;
 
 public class VerificacionCorreo {
 
+    private static final String remitente="recon.reservas@gmail.com";
+    private static final String claveRemitente="ytmk gaut qvrr wkti ";
+
+
     public static boolean verificarCorreo(Component parent,String correo){
         final int codigo=generarCodigoVerificacion();
         
@@ -33,11 +37,8 @@ public class VerificacionCorreo {
 
         return dialog.fueVerificado();
     }
-    
-    private static void enviarCodigoCorreo(String correoDestinatario, int codigo) {
 
-        final String remitente="recon.reservas@gmail.com";
-        final String clave="ytmk gaut qvrr wkti";
+    public static void  enviarCorreoInicioSesion(String correoDestinatario) {
 
         Properties propsCorreo = new Properties();
         propsCorreo.put("mail.smtp.host", "smtp.gmail.com");
@@ -48,7 +49,36 @@ public class VerificacionCorreo {
         Session session = Session.getInstance(propsCorreo, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(remitente, clave);
+                return new PasswordAuthentication(remitente, claveRemitente);
+            }
+        });
+
+        try{
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(remitente));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(correoDestinatario));
+            message.setSubject("Inicio de Sesión");
+            message.setText("Se ha iniciado sesion en un dispositivo con tu cuenta de Recon Reservas");
+
+            Transport.send(message);
+            System.out.println("Correo enviado a " + correoDestinatario);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void enviarCodigoCorreo(String correoDestinatario, int codigo) {
+
+        Properties propsCorreo = new Properties();
+        propsCorreo.put("mail.smtp.host", "smtp.gmail.com");
+        propsCorreo.put("mail.smtp.port", "587");
+        propsCorreo.put("mail.smtp.auth", "true");
+        propsCorreo.put("mail.smtp.starttls.enable", "true");
+
+        Session session = Session.getInstance(propsCorreo, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(remitente, claveRemitente);
             }
         });
 
