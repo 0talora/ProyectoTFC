@@ -35,6 +35,28 @@ Para comenzar a usar **ReservasAirsoft**, sigue estos pasos:
 
 💡 *Recuerda que no podrás acceder a las funciones principales hasta haber verificado tu cuenta correctamente.*
 
+---
+
+### 🧑‍💼 Acceso como administrador
+
+Por defecto, **todos los usuarios nuevos se crean como usuarios normales**.  
+Si deseas probar las funciones de **administrador**, deberás modificar manualmente el rol en la base de datos:
+
+1. Conéctate a la base de datos (por ejemplo, usando **DBeaver** o **MySQL Workbench**).  
+2. Abre la tabla `usuarios`.  
+3. Localiza tu usuario recién creado.  
+4. Cambia el valor del campo `es_admin` a `1` (o `TRUE`).  
+5. Guarda los cambios.  
+
+Luego, al iniciar sesión con ese usuario, tendrás acceso al **panel de administración**, donde podrás:
+- Crear, modificar y cancelar eventos.  
+- Ver y gestionar los campos administrados.
+
+> ⚠️ Este paso solo es necesario si quieres probar las funciones administrativas.  
+> Los usuarios normales no tienen acceso a estas opciones.
+
+---
+
 ## 📄 Descripción del proyecto
 El proyecto consiste en el desarrollo de una aplicación de escritorio llamada **ReservasAirsoft**, cuyo objetivo principal es facilitar la gestión de reservas de campos de airsoft para usuarios y administradores. La aplicación está implementada en **Java** utilizando **Swing** para la interfaz gráfica, **BCrypt** para las contraseñas y **Hibernate** para la conexión y persistencia de datos en una base de datos remota alojada en **AWS RDS**(para la publicación de este proyecto se ha modificado la BDD a una en local para facilitar la prueba de la aplicación).
 
@@ -262,3 +284,4 @@ Ver logs del contenedor
 ```bash 
 docker logs -f AirsoftBDD
 ```
+
