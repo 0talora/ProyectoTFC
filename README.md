@@ -23,7 +23,7 @@ Para comenzar a usar **ReservasAirsoft**, sigue estos pasos:
 
 2. **Verificación por correo:**  
    Tras completar el registro, recibirás un **código de verificación** en el correo que hayas indicado.  
-   Deberás introducir ese código en la aplicación para confirmar tu cuenta y poder iniciar sesión correctamente.
+   Deberás introducir ese código en la aplicación para confirmar tu cuenta y poder iniciar sesión.
 
 3. **Navegación por la aplicación:**  
    Una vez dentro, encontrarás una **barra superior** que contiene el menú principal.  
@@ -58,7 +58,7 @@ Luego, al iniciar sesión con ese usuario, tendrás acceso al **panel de adminis
 ---
 
 ## 📄 Descripción del proyecto
-El proyecto consiste en el desarrollo de una aplicación de escritorio llamada **ReservasAirsoft**, cuyo objetivo principal es facilitar la gestión de reservas de campos de airsoft para usuarios y administradores. La aplicación está implementada en **Java** utilizando **Swing** para la interfaz gráfica, **BCrypt** para las contraseñas y **Hibernate** para la conexión y persistencia de datos en una base de datos remota alojada en **AWS RDS**(para la publicación de este proyecto se ha modificado la BDD a una en local para facilitar la prueba de la aplicación).
+El proyecto consiste en el desarrollo de una aplicación de escritorio llamada **ReservasAirsoft**, cuyo objetivo principal es facilitar la gestión de reservas de campos de airsoft para usuarios y administradores. La aplicación está implementada en **Java** utilizando **Swing** para la interfaz gráfica, **BCrypt** para las contraseñas y **Hibernate** para la conexión y persistencia de datos en una base de datos remota alojada en **AWS RDS** (para la publicación de este proyecto se ha modificado la DDBB a una en local para facilitar la prueba de la aplicación).
 
 El proyecto surge de la necesidad de digitalizar y facilitar la experiencia de reserva de los usuarios, así como la administración de eventos por parte de los responsables de los campos, siguiendo una arquitectura **MVC (Modelo-Vista-Controlador)** y un código modular y escalable.
 
@@ -284,4 +284,5 @@ Ver logs del contenedor
 ```bash 
 docker logs -f AirsoftBDD
 ```
+
 
